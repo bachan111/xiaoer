@@ -10,6 +10,8 @@ import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
 
 public abstract class BaseActivity extends AppCompatActivity {
+
+    protected TitleBar titleBar;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +44,13 @@ public abstract class BaseActivity extends AppCompatActivity {
      *         app:title="监听标题栏点击事件" />
      */
     private void initTitle() {
-        TitleBar titleBar = findViewById(R.id.tb_main_bar);
+        titleBar = findViewById(R.id.tb_main_bar);
         titleBar.setOnTitleBarListener(new OnTitleBarListener() {
 
             @Override
             public void onLeftClick(TitleBar titleBar) {
 //                ToastUtils.show("左项 View 被点击");
+                finish();
             }
 
             @Override

@@ -14,13 +14,11 @@ import com.bachan.xiaoer.utils.DBUtils;
 
 public class RecordActivity extends BaseActivity implements View.OnClickListener{
 
-    private ImageView note_back;
     private TextView note_time;
     private EditText content;
     private ImageView delete;
     private ImageView note_save;
     private SQLiteHelper mSQLiteHelper;
-    private TextView noteName;
     private String id;
 
     @Override
@@ -30,23 +28,20 @@ public class RecordActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initData() {
-        note_back = (ImageView) findViewById(R.id.note_back);
         note_time = (TextView)findViewById(R.id.tv_time);
         content = (EditText) findViewById(R.id.note_content);
         delete = (ImageView) findViewById(R.id.delete);
         note_save = (ImageView) findViewById(R.id.note_save);
-        noteName = (TextView) findViewById(R.id.note_name);
-        note_back.setOnClickListener(this);
         delete.setOnClickListener(this);
         note_save.setOnClickListener(this);
 
         mSQLiteHelper = new SQLiteHelper(this);
-        noteName.setText("添加记录");
+        titleBar.setTitle("添加记录");
         Intent intent = getIntent();
         if(intent!= null){
             id = intent.getStringExtra("id");
             if (id != null){
-                noteName.setText("修改记录");
+                titleBar.setTitle("修改记录");
                 content.setText(intent.getStringExtra("content"));
                 note_time.setText(intent.getStringExtra("time"));
                 note_time.setVisibility(View.VISIBLE);
@@ -57,9 +52,6 @@ public class RecordActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.note_back:
-                finish();
-                break;
             case R.id.delete:
                 content.setText("");
                 break;

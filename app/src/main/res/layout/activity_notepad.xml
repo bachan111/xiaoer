@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fefefe">
-    <TextView
-        android:id="@+id/note_name"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:textSize="20sp"
-        android:textColor="@android:color/white"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:background="#fb7a6a"
-        android:text="记事本"/>
+    <com.hjq.bar.TitleBar
+        android:id="@+id/tb_main_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:titleStyle="bold"
+        app:title="记事本" />
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
@@ -24,7 +23,7 @@
         android:fadingEdge="none"
         android:listSelector="#00000000"
         android:scrollbars="none"
-        android:layout_below="@+id/note_name">
+        android:layout_below="@+id/tb_main_bar">
     </ListView>
     <ImageView
         android:id="@+id/add"
