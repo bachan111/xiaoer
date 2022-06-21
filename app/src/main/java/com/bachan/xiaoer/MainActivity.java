@@ -1,14 +1,25 @@
 package com.bachan.xiaoer;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.view.View;
 
-import android.os.Bundle;
+import com.bachan.xiaoer.base.BaseActivity;
+import com.bachan.xiaoer.notepd.ui.NotepadActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int setContentViewRes() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initData() {
+        findViewById(R.id.mNotepad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NotepadActivity.class));
+            }
+        });
     }
 }

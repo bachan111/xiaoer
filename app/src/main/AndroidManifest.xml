@@ -3,12 +3,15 @@
     package="com.bachan.xiaoer">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/xiaoer"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/xiaoer_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Xiaoer">
+        android:theme="@style/Theme.Xiaoer.NoActionBar">
+        <activity android:name=".notepd.ui.RecordActivity"></activity>
+        <activity android:name=".notepd.ui.NotepadActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
