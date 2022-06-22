@@ -18,11 +18,22 @@
     <Button
         android:id="@+id/mNotepad"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="随心记"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="记事本"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/mTimePicker"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:text="时间选择器"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/mAddDataCalendar"
+        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:text="日历中添加数据"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
