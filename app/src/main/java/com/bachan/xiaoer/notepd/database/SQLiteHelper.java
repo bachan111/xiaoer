@@ -23,14 +23,18 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table "+DBUtils.DATABASE_TABLE+"("+DBUtils.NOTEPAD_ID+
-                " integer primary key autoincrement,"+ DBUtils.NOTEPAD_CONTENT +
+                " integer primary key autoincrement,"+ DBUtils.NOTEPAD_TITLE +
+                " text,"+ DBUtils.NOTEPAD_CONTENT +
                 " text," + DBUtils.NOTEPAD_TIME+ " text)");
     }
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
     //添加数据
-    public boolean insertData(String userContent,String userTime){
+    public boolean insertData(String title,String userContent,String userTime){
         ContentValues contentValues=new ContentValues();
+        contentValues.put(DBUtils.NOTEPAD_TITLE,title);
         contentValues.put(DBUtils.NOTEPAD_CONTENT,userContent);
         contentValues.put(DBUtils.NOTEPAD_TIME,userTime);
         return
@@ -44,8 +48,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 sqLiteDatabase.delete(DBUtils.DATABASE_TABLE,sql,contentValuesArray)>0;
     }
     //修改数据
-    public boolean updateData(String id,String content,String userYear){
+    public boolean updateData(String id,String title,String content,String userYear){
         ContentValues contentValues=new ContentValues();
+        contentValues.put(DBUtils.NOTEPAD_TITLE,title);
         contentValues.put(DBUtils.NOTEPAD_CONTENT,content);
         contentValues.put(DBUtils.NOTEPAD_TIME,userYear);
         String sql=DBUtils.NOTEPAD_ID+"=?";
@@ -63,11 +68,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 NotepadBean noteInfo=new NotepadBean();
                 String id = String.valueOf(cursor.getInt
                         (cursor.getColumnIndex(DBUtils.NOTEPAD_ID)));
+                String title = cursor.getString(cursor.getColumnIndex
+                        (DBUtils.NOTEPAD_TITLE));
                 String content = cursor.getString(cursor.getColumnIndex
                         (DBUtils.NOTEPAD_CONTENT));
                 String time = cursor.getString(cursor.getColumnIndex
                         (DBUtils.NOTEPAD_TIME));
                 noteInfo.setId(id);
+                noteInfo.setTitle(title);
                 noteInfo.setNotepadContent(content);
                 noteInfo.setNotepadTime(time);
                 list.add(noteInfo);

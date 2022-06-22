@@ -3,6 +3,7 @@ package com.bachan.xiaoer.notepd.ui;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -51,6 +52,7 @@ public class NotepadActivity extends BaseActivity {
                 NotepadBean notepadBean = list.get(position);
                 Intent intent = new Intent(NotepadActivity.this, RecordActivity.class);
                 intent.putExtra("id", notepadBean.getId());
+                intent.putExtra("title", notepadBean.getTitle());
                 intent.putExtra("time", notepadBean.getNotepadTime()); //记录的时间
                 intent.putExtra("content", notepadBean.getNotepadContent()); //记录的内容
                 NotepadActivity.this.startActivityForResult(intent, 1);
@@ -60,7 +62,7 @@ public class NotepadActivity extends BaseActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int
                     position, long id) {
-                AlertDialog dialog;
+                AlertDialog dialog = null;
                 AlertDialog.Builder builder = new AlertDialog.Builder( NotepadActivity.this)
                         .setMessage("是否删除此事件？")
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -83,6 +85,8 @@ public class NotepadActivity extends BaseActivity {
                         });
                 dialog =  builder.create();
                 dialog.show();
+                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+                dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
                 return true;
             }
         });

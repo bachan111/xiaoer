@@ -22,18 +22,4 @@
         android:textColor="@color/black"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/mTimePicker"
-        android:layout_width="wrap_content"
-        android:textColor="@color/black"
-        android:text="时间选择器"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/mAddDataCalendar"
-        android:layout_width="wrap_content"
-        android:textColor="@color/black"
-        android:text="日历中添加数据"
-        android:layout_height="wrap_content" />
-
 </LinearLayout>

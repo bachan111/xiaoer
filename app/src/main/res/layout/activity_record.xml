@@ -13,15 +13,14 @@
         app:titleStyle="bold"
         app:title="添加记录" />
 
-    <TextView
-        android:id="@+id/tv_time"
+    <EditText
+        android:id="@+id/mTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:gravity="center"
-        android:visibility="gone"
         android:textColor="#fb7a6a"/>
     <EditText
         android:id="@+id/note_content"
